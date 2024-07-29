@@ -1,0 +1,61 @@
+Capstone Design, team Syncro-net의 project를 실행하기 위한 지침서
+
+딥러닝을 이용한 수화번역프로그램 개발.
+
+
+1. 우선 디렉터리 안의 모든 파일을 실행하기 위해 설치해야할 pip package 설명&나열
+
+cv2 :	컴퓨터 비전 및 이미지 처리 라이브러리, OpenCV
+mediapipe :		손 및 얼굴 검출 등 여러 컴퓨터 비전 작업을 위한 라이브러리
+csv:	CSV 파일 읽기 및 쓰기
+time:	시간 측정 및 지연 처리 함수 제공
+pandas:	데이터 조작 및 분석 라이브러리
+sklearn:	머신러닝 모델 구축 및 데이터 전처리 도구 제공
+torch:	PyTorch, 딥러닝 프레임워크
+torch.nn:	PyTorch의 신경망 구성 요소 제공
+torch.optim:	PyTorch의 최적화 알고리즘 제공
+flask:	웹 애플리케이션 프레임워크
+numpy:	다차원 배열 및 행렬 연산을 위한 라이브러리
+pickle:	파이썬 객체 직렬화 및 역직렬화 라이브러리
+
+각각 windows 환경과 Mac환경에서 사용 가능하도록 pip install 하는 법을 기술하겠음.
+
+mac
+pip3 install opencv-python mediapipe-silicon pandas scikit-learn torch flask numpy
+
+windows
+pip install opencv-python mediapipe pandas scikit-learn torch flask numpy
+
+pip3 = mac
+pip = windows
+
+
+2. 이유는 모르겠으나, 최신 버전의 python과 해당 패키지의 cv와 호환이 되지 않는다.
+
+이를 해결하기 위해 python 3.11.2 버전으로 Debug해야만 정상 작동 가능.
+
+https://www.python.org/downloads/release/python-3112/
+해당 사이트에서 본인OS에 맞는 File 설치
+
+이후 vscode기준 shift + cmd + p 입력 (windows는 shift + alt + p)
+>Python : Select Interpreter 선택 옵션을 클릭하고
+3.11.2 버전을 선택하면 실행을 위한 세팅은 끝.
+
+
+3. 코드 실행 순서
+
+makeCSV.py - newtrain.py - newrun.py or runweb.py
+
+1번 코드 실행시 사용자가 원하는 수화를 입력할 수 있다.
+원하는 수화의 개수와 훈련에 사용할 데이터의 수를 정할 수 있음.
+
+2번 코드 실행시 1번 코드 실행의 결과로 나온 파일에 대한 훈련을 진행하고
+훈련을 거치고 나온 .pth 파일을 생성 pth 파일은 훈련에서 사용된 손실값, 가중치 등이 들어 있음.
+
+3번 코드 실행시 사용자가 수화를 하게 되면 해당 수화가 무엇인지 번역을 하는 과정을 거치게 되며,
+rubweb.py를 실행하면 127.0.0.1:5000 포트에 접속하여 웹으로 실행이 가능하다.
+
+이로서 각 코드의 실행법을 알아보았다.  
+
+
+
